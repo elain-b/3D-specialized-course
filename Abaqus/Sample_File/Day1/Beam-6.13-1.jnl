@@ -1,0 +1,158 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(-10.0, 10.0), 
+    point2=(10.0, -10.0))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(depth=200.0, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((210000.0, 0.3), 
+    ))
+mdb.models['Model-1'].materials.changeKey(fromName='Material-1', toName=
+    'Steel')
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name=
+    'Homogeneous', thickness=None)
+mdb.models['Model-1'].parts.changeKey(fromName='Part-1', toName='Beam')
+mdb.models.changeKey(fromName='Model-1', toName='Beam')
+mdb.models['Beam'].parts['Beam'].seedPart(deviationFactor=0.1, minSizeFactor=
+    0.1, size=5.0)
+mdb.models['Beam'].parts['Beam'].generateMesh()
+mdb.models['Beam'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Beam'].rootAssembly.Instance(dependent=ON, name='Beam-1', part=
+    mdb.models['Beam'].parts['Beam'])
+mdb.models['Beam'].StaticStep(initialInc=0.1, name='Static_Step', previous=
+    'Initial')
+mdb.models['Beam'].rootAssembly.Set(faces=
+    mdb.models['Beam'].rootAssembly.instances['Beam-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-1')
+mdb.models['Beam'].PinnedBC(createStepName='Static_Step', localCsys=None, name=
+    'BC-1', region=mdb.models['Beam'].rootAssembly.sets['Set-1'])
+mdb.models['Beam'].boundaryConditions['BC-1'].resume()
+mdb.models['Beam'].boundaryConditions['BC-1'].resume()
+mdb.models['Beam'].boundaryConditions['BC-1'].resume()
+mdb.models['Beam'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Beam'].rootAssembly.instances['Beam-1'].faces.getSequenceFromMask(
+    ('[#8 ]', ), ))
+mdb.models['Beam'].Pressure(amplitude=UNSET, createStepName='Static_Step', 
+    distributionType=UNIFORM, field='', magnitude=100.0, name='Load-1', region=
+    mdb.models['Beam'].rootAssembly.surfaces['Surf-1'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Beam', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Beam_Analysis', nodalOutputPrecision=
+    SINGLE, numCpus=1, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+# Save by Administrator on 2014_02_18-15.25.47; build 6.13-1 2013_05_16-11.28.56 126354
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Beam'].parts['Beam'].Set(cells=
+    mdb.models['Beam'].parts['Beam'].cells.getSequenceFromMask(('[#1 ]', ), ), 
+    name='Set-1')
+mdb.models['Beam'].parts['Beam'].SectionAssignment(offset=0.0, offsetField='', 
+    offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Beam'].parts['Beam'].sets['Set-1'], sectionName='Homogeneous', 
+    thicknessAssignment=FROM_SECTION)
+mdb.models['Beam'].rootAssembly.regenerate()
+mdb.models['Beam'].rootAssembly.regenerate()
+# Save by Administrator on 2014_10_21-11.15.03; build 6.13-1 2013_05_16-11.28.56 126354
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Beam_Analysis'].submit(consistencyChecking=OFF)
+mdb.jobs['Beam_Analysis']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim5234-pc', 'handle': 0, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Beam_Analysis.odb', 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim5234-pc', 'handle': 3660, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Beam_Analysis']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Beam_Analysis', 'memory': 30.0275316238403})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Beam_Analysis']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'Beam_Analysis', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Beam_Analysis']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Beam_Analysis'})
+mdb.jobs['Beam_Analysis']._Message(JOB_COMPLETED, {
+    'time': 'Tue Oct 21 11:15:39 2014', 'jobName': 'Beam_Analysis'})
+# Save by Administrator on 2014_10_21-11.16.01; build 6.13-1 2013_05_16-11.28.56 126354

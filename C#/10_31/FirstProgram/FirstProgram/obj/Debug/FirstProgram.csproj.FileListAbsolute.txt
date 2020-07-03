@@ -1,0 +1,9 @@
+C:\Users\517-12\Desktop\C#\FirstProgram\FirstProgram\bin\Debug\FirstProgram.exe.config
+C:\Users\517-12\Desktop\C#\FirstProgram\FirstProgram\bin\Debug\FirstProgram.exe
+C:\Users\517-12\Desktop\C#\FirstProgram\FirstProgram\bin\Debug\FirstProgram.pdb
+C:\Users\517-12\Desktop\C#\FirstProgram\FirstProgram\obj\Debug\FirstProgram.csprojResolveAssemblyReference.cache
+C:\Users\517-12\Desktop\C#\FirstProgram\FirstProgram\obj\Debug\FirstProgram.exe
+C:\Users\517-12\Desktop\C#\FirstProgram\FirstProgram\obj\Debug\FirstProgram.pdb
+C:\Users\517-12\Desktop\C#\10_31\FirstProgram\FirstProgram\bin\Debug\FirstProgram.exe.config
+C:\Users\517-12\Desktop\C#\10_31\FirstProgram\FirstProgram\obj\Debug\FirstProgram.exe
+C:\Users\517-12\Desktop\C#\10_31\FirstProgram\FirstProgram\obj\Debug\FirstProgram.pdb

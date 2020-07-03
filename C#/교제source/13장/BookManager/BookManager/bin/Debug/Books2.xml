@@ -1,0 +1,242 @@
+<books>
+<book>
+  <isbn>9791156641452</isbn>
+  <name>IT CookBook 실전에 강한 PLC</name>
+  <publisher>한빛아카데미</publisher>
+  <page>384</page>
+  <borrowedAt>0001년 1월 1일 월요일</borrowedAt>
+  <isBorrowed>0</isBorrowed>
+  <userId>0</userId>
+  <userName></userName>
+</book>
+<book>
+  <isbn>9788998756277</isbn>
+  <name>ITCookbook HTML5 웹 프로그래밍 입문</name>
+  <publisher>한빛아카데미</publisher>
+  <page>440</page>
+  <borrowedAt>0001년 1월 1일 월요일</borrowedAt>
+  <isBorrowed>0</isBorrowed>
+  <userId>0</userId>
+  <userName></userName>
+</book>
+<book>
+  <isbn>9791185890104</isbn>
+  <name>소셜 코딩으로 이끄는 GitHub 실천 기술</name>
+  <publisher>제이펍</publisher>
+  <page>356</page>
+  <borrowedAt>0001년 1월 1일 월요일</borrowedAt>
+  <isBorrowed>0</isBorrowed>
+  <userId>0</userId>
+  <userName></userName>
+</book>
+<book>
+  <isbn>9788968481901</isbn>
+  <name>Nature of Code</name>
+  <publisher>한빛미디어</publisher>
+  <page>620</page>
+  <borrowedAt>2015년 8월 11일 화요일</borrowedAt>
+  <isBorrowed>1</isBorrowed>
+  <userId>3</userId>
+  <userName>윤아린</userName>
+</book>
+<book>
+  <isbn>9788968480553</isbn>
+  <name>TopCoder 탑코더 알고리즘 트레이닝</name>
+  <publisher>한빛미디어</publisher>
+  <page>492</page>
+  <borrowedAt>0001년 1월 1일 월요일</borrowedAt>
+  <isBorrowed>0</isBorrowed>
+  <userId>0</userId>
+  <userName></userName>
+</book>
+<book>
+  <isbn>9788998756260</isbn>
+  <name>ITCookbook 정보 보안 개론</name>
+  <publisher>한빛아카데미</publisher>
+  <page>596</page>
+  <borrowedAt>0001년 1월 1일 월요일</borrowedAt>
+  <isBorrowed>0</isBorrowed>
+  <userId>0</userId>
+  <userName></userName>
+</book>
+<book>
+  <isbn>9791156641209</isbn>
+  <name>ITCookbook 우분투 리눅스</name>
+  <publisher>한빛미디어</publisher>
+  <page>772</page>
+  <borrowedAt>0001년 1월 1일 월요일</borrowedAt>
+  <isBorrowed>0</isBorrowed>
+  <userId>0</userId>
+  <userName></userName>
+</book>
+  <book>
+    <isbn>4478025819</isbn>
+    <name>嫌われる勇気―――自己啓発の源流「アドラー」の教え</name>
+    <publisher>キングベアー出版</publisher>
+    <page>296</page>
+    <borrowedAt>2013년 12월 13일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4863940611</isbn>
+    <name>完訳 7つの習慣―人格主義の回復</name>
+    <publisher>ダイヤモンド社</publisher>
+    <page>642</page>
+    <borrowedAt>2016년 6월 1일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4478066119</isbn>
+    <name>幸せになる勇気――自己啓発の源流「アドラー」の教えII</name>
+    <publisher>ダイヤモンド社</publisher>
+    <page>296</page>
+    <borrowedAt>2016년 2월 26일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4905073819</isbn>
+    <name>日本一楽しい漢字ドリル うんこかん字ドリル 小学1年生</name>
+    <publisher>文響社</publisher>
+    <page>84</page>
+    <borrowedAt>2017년 3월 18일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4800215314</isbn>
+    <name>まんがでわかる 7つの習慣</name>
+    <publisher>宝島社</publisher>
+    <page>175</page>
+    <borrowedAt>2013년 10월 11일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4413230575</isbn>
+    <name>「ずるい人」が周りからいなくなる本</name>
+    <publisher>青春出版社</publisher>
+    <page>192</page>
+    <borrowedAt>2017년 9월 30일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4479796107</isbn>
+    <name>最強の独学術 自力であらゆる目標を達成する「勝利のバイブル」</name>
+    <publisher>大和書房</publisher>
+    <page>208</page>
+    <borrowedAt>2017년 8월 20일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4479791775</isbn>
+    <name>自分の小さな「箱」から脱出する方法</name>
+    <publisher>大和書房</publisher>
+    <page>280</page>
+    <borrowedAt>2016년 10월 19일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4781690445</isbn>
+    <name>この世でいちばん大事な「カネ」の話 (よりみちパン!セ)</name>
+    <publisher>イースト・プレス</publisher>
+    <page>234</page>
+    <borrowedAt>2012년 9월 21일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4492556733</isbn>
+    <name>東大生が書いた 問題を解く力を鍛えるケース問題ノート 50の厳選フレームワークで、どんな難問もスッキリ「地図化」</name>
+    <publisher>東洋経済新報社</publisher>
+    <page>164</page>
+    <borrowedAt>2010년 9월 17일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4845914333</isbn>
+    <name>天才たちの日課 クリエイティブな人々の必ずしもクリエイティブでない日々</name>
+    <publisher>フィルムアート社</publisher>
+    <page>384</page>
+    <borrowedAt>2014년 12월 15일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4198614614</isbn>
+    <name>魔女と暮らせば―大魔法使いクレストマンシー</name>
+    <publisher>徳間書店 </publisher>
+    <page>298</page>
+    <borrowedAt>2001년 12월 1일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4198614355</isbn>
+    <name>クリストファーの魔法の旅―大魔法使いクレストマンシー</name>
+    <publisher>徳間書店 </publisher>
+    <page>353</page>
+    <borrowedAt>2001년 10월 1일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4198940980</isbn>
+    <name>チャーメインと魔法の家: ハウルの動く城 3 </name>
+    <publisher>徳間書店 </publisher>
+    <page>411</page>
+    <borrowedAt>2016년 4월 1일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4863893467</isbn>
+    <name>ホグワーツMAP付き　ハリー・ポッターと呪いの子 第一部、第二部 特別リハーサル版 (ハリー・ポッターシリーズ)  </name>
+    <publisher>静山社 </publisher>
+    <page>411</page>
+    <borrowedAt>2016년 11월 11일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4041055090</isbn>
+    <name>鹿の王 3</name>
+    <publisher>KADOKAWA</publisher>
+    <page>272</page>
+    <borrowedAt>2017년 7월 25일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+  <book>
+    <isbn>978-4062768535</isbn>
+    <name>新世界より(上) </name>
+    <publisher>講談社</publisher>
+    <page>488</page>
+    <borrowedAt>2011년 1월 14일 월요일</borrowedAt>
+    <isBorrowed>0</isBorrowed>
+    <userId>0</userId>
+    <userName></userName>
+  </book>
+</books>

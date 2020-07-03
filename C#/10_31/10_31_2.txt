@@ -1,0 +1,3 @@
+﻿1>------ Build started: Project: 10_31, Configuration: Debug Any CPU ------
+1>  10_31 -> C:\Users\517-12\Desktop\C#\10_31\10_31\bin\Debug\10_31.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

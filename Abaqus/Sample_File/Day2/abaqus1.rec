@@ -1,0 +1,848 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep(
+    'C:/Users/Administrator/Desktop/HanKook_Tire_EDU_20121210/Abq_Basic_Sample/05_General Static_Contact/HingeAssembly.stp'
+    , scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='HingeAssembly', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(angle=90.0, 
+    point1=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(13.75, 18.75), 
+    point2=(13.75, -17.5))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].Spot(point=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    23.0220527648926, 2.17023849487305), value=20.0, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1])
+mdb.models['Model-1'].sketches['__profile__'].delete(objectList=(
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], ))
+mdb.models['Model-1'].sketches['__profile__'].delete(objectList=(
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(10.0, 15.0), point2=
+    (10.0, -15.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(10.0, 15.0), point2=
+    (10.0, -21.25))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].DistanceDimension(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], textPoint=(
+    8.09523391723633, 18.9007911682129), value=12.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(angle=0.0, 
+    point1=(0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].Spot(point=(12.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].EqualDistanceConstraint(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1], midpoint=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2])
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    19.3100929260254, 11.5614433288574), value=60.0, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[1])
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-2', type=
+    ANALYTIC_RIGID_SURFACE)
+mdb.models['Model-1'].parts['Part-2'].AnalyticRigidSurfRevolve(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Part-2'].features['3D Analytic rigid shell-1'].sketch)
+mdb.models['Model-1'].parts['Part-2'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Part-2'].features['3D Analytic rigid shell-1'])
+mdb.models['Model-1'].sketches['__edit__'].Line(point1=(42.5, 22.5), point2=(
+    45.0, -22.5))
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((210000.0, 0.3), 
+    ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Section-1', thickness=None)
+mdb.models['Model-1'].parts['HingeAssembly'].Set(cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['HingeAssembly'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['HingeAssembly'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'HingeAssembly-1', part=mdb.models['Model-1'].parts['HingeAssembly'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Part-2-1', 
+    part=mdb.models['Model-1'].parts['Part-2'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'HingeAssembly-2', part=mdb.models['Model-1'].parts['HingeAssembly'])
+mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].translate(
+    vector=(88.0, 0.0, 0.0))
+mdb.models['Model-1'].rootAssembly.rotate(angle=-180.0, axisDirection=(0.0, 
+    -40.0, 0.0), axisPoint=(88.0, 0.0, 0.0), instanceList=('HingeAssembly-2', 
+    ))
+mdb.models['Model-1'].rootAssembly.Coaxial(fixedAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces[8], 
+    flip=OFF, movableAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces[8])
+mdb.models['Model-1'].rootAssembly.rotate(angle=90.0, axisDirection=(0.0, 0.0, 
+    40.0), axisPoint=(60.0, -20.0, 0.0), instanceList=('HingeAssembly-2', ))
+mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].ConvertConstraints(
+    )
+mdb.models['Model-1'].rootAssembly.rotate(angle=180.0, axisDirection=(-30.0, 
+    0.0, 0.0), axisPoint=(120.0, 0.0, 40.0), instanceList=('HingeAssembly-2', 
+    ))
+mdb.models['Model-1'].rootAssembly.Coaxial(fixedAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces[8], 
+    flip=ON, movableAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces[8])
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('HingeAssembly-2', )
+    , vector=(0.0, 0.0, -80.0))
+mdb.models['Model-1'].rootAssembly.Coaxial(fixedAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces[8], 
+    flip=OFF, movableAxis=
+    mdb.models['Model-1'].rootAssembly.instances['Part-2-1'].faces[0])
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('Part-2-1', ), 
+    vector=(0.0, 0.0, -20.0))
+mdb.models['Model-1'].parts['HingeAssembly'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['HingeAssembly'].faces[7])
+mdb.models['Model-1'].parts['HingeAssembly'].PartitionCellByPlanePointNormal(
+    cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), normal=mdb.models['Model-1'].parts['HingeAssembly'].edges[3]
+    , point=mdb.models['Model-1'].parts['HingeAssembly'].InterestingPoint(
+    mdb.models['Model-1'].parts['HingeAssembly'].edges[24], CENTER))
+mdb.models['Model-1'].parts['HingeAssembly'].PartitionCellByPlanePointNormal(
+    cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#5 ]', ), ), normal=
+    mdb.models['Model-1'].parts['HingeAssembly'].edges[26], point=
+    mdb.models['Model-1'].parts['HingeAssembly'].InterestingPoint(
+    mdb.models['Model-1'].parts['HingeAssembly'].edges[13], CENTER))
+mdb.models['Model-1'].parts['HingeAssembly'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=2.0)
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-2'].ReferencePoint(point=
+    mdb.models['Model-1'].parts['Part-2'].InterestingPoint(
+    mdb.models['Model-1'].parts['Part-2'].edges[2], MIDDLE))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].StaticStep(initialInc=0.1, name='Step-1', nlgeom=ON, 
+    previous='Initial')
+mdb.models['Model-1'].fieldOutputRequests['F-Output-1'].setValues(variables=(
+    'S', 'PE', 'PEEQ', 'PEMAG', 'LE', 'U', 'RF', 'CF', 'CSTRESS'))
+mdb.models['Model-1'].ContactProperty('IntProp-1')
+mdb.models['Model-1'].interactionProperties['IntProp-1'].TangentialBehavior(
+    formulation=FRICTIONLESS)
+mdb.models['Model-1'].rootAssembly.Surface(name='m_Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-2-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces.getSequenceFromMask(
+    ('[#c000028 ]', ), ))
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=NONE, 
+    clearanceRegion=None, createStepName='Step-1', datumAxis=None, 
+    initialClearance=OMIT, interactionProperty='IntProp-1', master=
+    mdb.models['Model-1'].rootAssembly.surfaces['m_Surf-1'], name='Int-1', 
+    slave=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-1'], sliding=
+    FINITE, thickness=ON)
+mdb.models['Model-1'].rootAssembly.Surface(name='m_Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces.getSequenceFromMask(
+    ('[#c000028 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-2-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=NONE, 
+    clearanceRegion=None, createStepName='Step-1', datumAxis=None, 
+    initialClearance=OMIT, interactionProperty='IntProp-1', master=
+    mdb.models['Model-1'].rootAssembly.surfaces['m_Surf-3'], name='Int-2', 
+    slave=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-3'], sliding=
+    FINITE, thickness=ON)
+mdb.models['Model-1'].rootAssembly.Surface(name='m_Surf-5', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces.getSequenceFromMask(
+    ('[#1000884 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-5', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces.getSequenceFromMask(
+    ('[#1000884 ]', ), ))
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=NONE, 
+    clearanceRegion=None, createStepName='Step-1', datumAxis=None, 
+    initialClearance=OMIT, interactionProperty='IntProp-1', master=
+    mdb.models['Model-1'].rootAssembly.surfaces['m_Surf-5'], name='Int-3', 
+    slave=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-5'], sliding=
+    FINITE, thickness=ON)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-1', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-2-1'].referencePoints[2], 
+    ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-1', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=UNSET, u2=SET, 
+    u3=SET, ur1=SET, ur2=UNSET, ur3=SET)
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces.getSequenceFromMask(
+    ('[#40000 ]', ), ), name='Set-2')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-2', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-2'], u1=UNSET, u2=SET, 
+    u3=SET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-7', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces.getSequenceFromMask(
+    ('[#40000 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', magnitude=-1.0, name='Load-1', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-7'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='HingAssem', nodalOutputPrecision=SINGLE, 
+    numCpus=2, numDomains=2, numGPUs=0, queue=None, scratch='', type=ANALYSIS, 
+    userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE SLAVE SURFACE ASSEMBLY_PART-2-1_M_SURF-1 CANNOT CONSIST OF EITHER DISCRETE RIGID ELEMENTS OR AN ANALYTICAL RIGID SURFACE.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE SLAVE SURFACE ASSEMBLY_PART-2-1_M_SURF-1 CANNOT CONSIST OF EITHER DISCRETE RIGID ELEMENTS OR AN ANALYTICAL RIGID SURFACE.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE SLAVE SURFACE ASSEMBLY_PART-2-1_M_SURF-1 CANNOT CONSIST OF EITHER DISCRETE RIGID ELEMENTS OR AN ANALYTICAL RIGID SURFACE.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE SLAVE SURFACE ASSEMBLY_PART-2-1_M_SURF-1 CANNOT CONSIST OF EITHER DISCRETE RIGID ELEMENTS OR AN ANALYTICAL RIGID SURFACE.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'HingAssem'})
+mdb.models['Model-1'].interactions['Int-2'].setValues(adjustMethod=NONE, 
+    bondingSet=None, contactTracking=TWO_CONFIG, enforcement=SURFACE_TO_SURFACE
+    , initialClearance=OMIT, sliding=FINITE, thickness=ON)
+mdb.models['Model-1'].interactions['Int-2'].swapSurfaces()
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 6416, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingAssem', 'memory': 546.792882919312})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'EXCESSIVE DISTORTION AT A TOTAL OF 4 INTEGRATION POINTS IN SOLID (CONTINUUM) ELEMENTS', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 1U', 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 2U', 
+    'timeIncrement': 0.025, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 3U', 
+    'timeIncrement': 0.00625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 4U', 
+    'timeIncrement': 0.0015625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 5U', 
+    'timeIncrement': 0.000390625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Too many attempts made for this increment', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.models['Model-1'].boundaryConditions['BC-2'].setValuesInStep(stepName=
+    'Step-1', u1=0.0)
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 5156, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingAssem', 'memory': 546.7962474823})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 8, 'iterations': 9, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 1, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 1, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 9, 'iterations': 9, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 1, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.9125, 'attempts': ' 1U', 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 0.9125, 
+    'step': 1, 'jobName': 'HingAssem', 'severe': 11, 'iterations': 11, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.9125, 'attempts': ' 2U', 
+    'timeIncrement': 0.021875, 'increment': 6, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 11, 'iterations': 11, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Process terminated by external request (SIGTERM or SIGINT received).', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(INTERRUPTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis interrupted by external signal', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+del mdb.models['Model-1'].parts['Part-2'].features['RP']
+mdb.models['Model-1'].parts['Part-2'].ReferencePoint(point=
+    mdb.models['Model-1'].parts['Part-2'].vertices[1])
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].boundaryConditions['BC-1']
+mdb.models['Model-1'].rootAssembly.Set(name='Set-3', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-2-1'].referencePoints[3], 
+    ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-3', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-3'], u1=UNSET, u2=SET, 
+    u3=SET, ur1=SET, ur2=UNSET, ur3=SET)
+mdb.models['Model-1'].parts['HingeAssembly'].deleteMesh()
+mdb.models['Model-1'].parts['HingeAssembly'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=4.0)
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 4060, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingAssem', 'memory': 68.2871265411377})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 6, 'iterations': 7, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 1, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 6, 'iterations': 6, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'HingAssem', 'severe': 7, 'iterations': 7, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_COMPLETED, {
+    'time': 'Sat Dec 08 16:51:48 2012', 'jobName': 'HingAssem'})
+mdb.models['Model-1'].boundaryConditions['BC-2'].setValuesInStep(stepName=
+    'Step-1', u1=FREED)
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 6804, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingAssem', 'memory': 68.2862033843994})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 1U', 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 2U', 
+    'timeIncrement': 0.025, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 3U', 
+    'timeIncrement': 0.00625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 4U', 
+    'timeIncrement': 0.0015625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'DISPLACEMENT INCREMENT FOR CONTACT IS TOO BIG.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 5U', 
+    'timeIncrement': 0.000390625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Too many attempts made for this increment', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.models['Model-1'].boundaryConditions['BC-2'].setValuesInStep(stepName=
+    'Step-1', u1=0.0)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-4', vertices=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].vertices.getSequenceFromMask(
+    ('[#100000 ]', ), ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-4', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-4'], u1=UNSET, u2=SET, 
+    u3=SET, ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 3788, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingAssem', 'memory': 68.2871417999268})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 1U', 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 8, 'iterations': 8, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 2U', 
+    'timeIncrement': 0.025, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 8, 'iterations': 8, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 3U', 
+    'timeIncrement': 0.00625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 8, 'iterations': 8, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 4U', 
+    'timeIncrement': 0.0015625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 6, 'iterations': 6, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 5U', 
+    'timeIncrement': 0.000390625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 6, 'iterations': 6, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Too many attempts made for this increment', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'HingAssem'})
+mdb.models['Model-1'].interactions['Int-1'].setValues(adjustMethod=OVERCLOSED, 
+    bondingSet=None, contactTracking=TWO_CONFIG, enforcement=SURFACE_TO_SURFACE
+    , initialClearance=OMIT, sliding=FINITE, thickness=ON, tied=OFF)
+mdb.models['Model-1'].interactions['Int-2'].setValues(adjustMethod=OVERCLOSED, 
+    bondingSet=None, contactTracking=TWO_CONFIG, enforcement=SURFACE_TO_SURFACE
+    , initialClearance=OMIT, sliding=FINITE, thickness=ON, tied=OFF)
+mdb.jobs['HingAssem'].submit(consistencyChecking=OFF)
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NOT ALL THE NODES THAT HAVE BEEN ADJUSTED WERE PRINTED. SPECIFY *PREPRINT,CONTACT=YES FOR COMPLETE PRINTOUT.', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingAssem.odb', 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 6600, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingAssem']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingAssem', 'memory': 68.2871417999268})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 7, 'iterations': 8, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 2, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 1, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'HingAssem', 'severe': 1, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'HingAssem', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingAssem']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingAssem'})
+mdb.jobs['HingAssem']._Message(JOB_COMPLETED, {
+    'time': 'Sat Dec 08 16:55:43 2012', 'jobName': 'HingAssem'})
+mdb.models['Model-1'].parts['HingeAssembly'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#17 ]', ), ))
+mdb.models['Model-1'].parts['HingeAssembly'].seedEdgeByNumber(constraint=FINER, 
+    edges=
+    mdb.models['Model-1'].parts['HingeAssembly'].edges.getSequenceFromMask((
+    '[#145000 ]', ), ), number=20)
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh(regions=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#17 ]', ), ))
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['HingeAssembly'].setValues(geometryRefinement=FINE)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['Part-2'].setValues(geometryRefinement=FINE)
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].interactions['Int-1'].setValues(adjustMethod=NONE, 
+    bondingSet=None, contactTracking=TWO_CONFIG, enforcement=SURFACE_TO_SURFACE
+    , initialClearance=OMIT, sliding=FINITE, thickness=ON, tied=OFF)
+mdb.models['Model-1'].interactions['Int-2'].setValues(adjustMethod=NONE, 
+    bondingSet=None, contactTracking=TWO_CONFIG, enforcement=SURFACE_TO_SURFACE
+    , initialClearance=OMIT, sliding=FINITE, thickness=ON, tied=OFF)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='HingeAssem01', nodalOutputPrecision=
+    SINGLE, numCpus=2, numDomains=2, numGPUs=0, queue=None, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['HingeAssem01'].submit(consistencyChecking=OFF)
+mdb.jobs['HingeAssem01']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'mgkim', 'handle': 0, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_S_SURF-1,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'PATH BASED TRACKING IS DEFINED IN CONTACT PAIR (ASSEMBLY_M_SURF-3,ASSEMBLY_PART-2-1_M_SURF-1). PATH BASED TRACKING CANNOT BE USED WITH ANALYTICAL RIGID MASTER SURFACES, THE STATE BASED TRACKING ALGORITHM WILL BE USED INSTEAD.', 
+    'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '60 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\Administrator\\Desktop\\Abq_Test\\HingeAssem01.odb', 
+    'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'mgkim', 'handle': 4156, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 0, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'HingeAssem01', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['HingeAssem01']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'HingeAssem01', 'memory': 91.7693748474121})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 1, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'HingeAssem01', 'severe': 6, 'iterations': 8, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 2, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'HingeAssem01', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 3, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'HingeAssem01', 'severe': 0, 'iterations': 2, 
+    'phase': STANDARD_PHASE, 'equilibrium': 2})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 4, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'HingeAssem01', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 5, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'HingeAssem01', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingeAssem01']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 
+    'step': 0, 'frame': 6, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'HingeAssem01', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['HingeAssem01']._Message(END_STEP, {'phase': STANDARD_PHASE, 
+    'stepId': 1, 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'HingeAssem01'})
+mdb.jobs['HingeAssem01']._Message(JOB_COMPLETED, {
+    'time': 'Sat Dec 08 17:05:17 2012', 'jobName': 'HingeAssem01'})
+mdb.models['Model-1'].parts['HingeAssembly'].deleteMesh()
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh()
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh()
+mdb.models['Model-1'].parts['HingeAssembly'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#4 ]', ), ))
+mdb.models['Model-1'].parts['HingeAssembly'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['HingeAssembly'].edges.getSequenceFromMask((
+    '[#100000 ]', ), ))
+mdb.models['Model-1'].parts['HingeAssembly'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#13 ]', ), ))
+mdb.models['Model-1'].parts['HingeAssembly'].deleteSeeds(regions=
+    mdb.models['Model-1'].parts['HingeAssembly'].edges.getSequenceFromMask((
+    '[#45000 ]', ), ))
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh()
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Part-2'].features['3D Analytic rigid shell-1'].sketch)
+mdb.models['Model-1'].parts['Part-2'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Part-2'].features['3D Analytic rigid shell-1'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Part-2'].regenerate()
+mdb.models['Model-1'].rootAssembly.regenerate()

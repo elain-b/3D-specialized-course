@@ -1,0 +1,120 @@
+# -*- coding: mbcs -*-
+from abaqus import *
+upgradeMdb('C:/Users/517-12/Desktop/Sample_File/Day2/pipeCreep_part-6.12-1.cae'
+    , 'C:/Users/517-12/Desktop/Sample_File/Day2/pipeCreep_part.cae')
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Part(name='pipe-intersection-failed', objectToCopy=
+    mdb.models['Model-1'].parts['pipe-intersection'])
+mdb.models['Model-1'].parts['pipe-intersection-failed'].Unlock(reportWarnings=
+    False)
+del mdb.models['Model-1'].parts['pipe-intersection']
+mdb.models['Model-1'].parts.changeKey(fromName='pipe-intersection-failed', 
+    toName='pipe-intersection')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['pipe-intersection'].PartitionCellByPlanePointNormal(
+    cells=
+    mdb.models['Model-1'].parts['pipe-intersection'].cells.getSequenceFromMask(
+    ('[#1 ]', ), ), normal=
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[10], point=
+    mdb.models['Model-1'].parts['pipe-intersection'].InterestingPoint(
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[7], CENTER))
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.03, name='__profile__', 
+    sheetSize=1.23, transform=
+    mdb.models['Model-1'].parts['pipe-intersection'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].faces[5], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].edges[21], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.25913, 0.118036)))
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3)
+mdb.models['Model-1'].parts['pipe-intersection'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0130359999629096, 
+    -0.0311300000193081), point2=(0.0130359999629096, -0.128845228580758))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[13])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[9], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[13])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(-0.0269640000251258, 
+    0.00886999997730459), point2=(-0.142500000074506, 0.00886999997730459))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[14])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[9], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[14])
+mdb.models['Model-1'].parts['pipe-intersection'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['pipe-intersection'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].edges[21])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.03, name='__profile__', 
+    sheetSize=1.23, transform=
+    mdb.models['Model-1'].parts['pipe-intersection'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].faces[4], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].edges[16], 
+    sketchOrientation=RIGHT, origin=(-0.115075, 0.194831, 0.229)))
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3)
+mdb.models['Model-1'].parts['pipe-intersection'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0310750000045639, 
+    0.0427568784844057), point2=(0.142500000074506, 0.0427568784844057))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(
+    addUndoState=False, entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[14])
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[9], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[14])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0095824626922989, 
+    0.00729600109867351), point2=(0.03, -0.0849071883166346))
+mdb.models['Model-1'].sketches['__profile__'].CoincidentConstraint(
+    addUndoState=False, entity1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[11], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5])
+mdb.models['Model-1'].parts['pipe-intersection'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['pipe-intersection'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ), sketch=mdb.models['Model-1'].sketches['__profile__'], 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].edges[16])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['pipe-intersection'].PartitionFaceByCurvedPathEdgePoints(
+    edge1=mdb.models['Model-1'].parts['pipe-intersection'].edges[3], edge2=
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[26], face=
+    mdb.models['Model-1'].parts['pipe-intersection'].faces[7], point1=
+    mdb.models['Model-1'].parts['pipe-intersection'].vertices[0], point2=
+    mdb.models['Model-1'].parts['pipe-intersection'].vertices[11])
+mdb.models['Model-1'].parts['pipe-intersection'].PartitionCellByPatchNCorners(
+    cell=mdb.models['Model-1'].parts['pipe-intersection'].cells[0], 
+    cornerPoints=(mdb.models['Model-1'].parts['pipe-intersection'].vertices[9], 
+    mdb.models['Model-1'].parts['pipe-intersection'].vertices[10], 
+    mdb.models['Model-1'].parts['pipe-intersection'].vertices[8], 
+    mdb.models['Model-1'].parts['pipe-intersection'].vertices[7]))
+mdb.models['Model-1'].parts['pipe-intersection'].PartitionCellByPatchNEdges(
+    cell=mdb.models['Model-1'].parts['pipe-intersection'].cells[0], edges=(
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[18], 
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[40], 
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[10], 
+    mdb.models['Model-1'].parts['pipe-intersection'].edges[7]))
+mdb.models['Model-1'].parts['pipe-intersection'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=0.02)
+mdb.models['Model-1'].parts['pipe-intersection'].generateMesh()
+# Save by 517-12 on 2017_10_20-13.34.00; build 6.14-3 2015_02_03-06.17.19 134785

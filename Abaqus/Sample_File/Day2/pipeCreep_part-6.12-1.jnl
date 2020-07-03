@@ -1,0 +1,182 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from optimization import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=2.0)
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3, dimensionTextHeight=16.0)
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(0.25, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(0.15, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.15, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.15, 0.0), 
+    ), radius=0.139, textPoint=(0.146855697035789, 0.107861623167992))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.25, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.25, 0.0), 
+    ), radius=0.228, textPoint=(0.227626323699951, 0.188574403524399))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='pipe-intersection', 
+    type=DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['pipe-intersection'].BaseSolidExtrude(depth=0.458, 
+    sketch=mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['pipe-intersection'].DatumPlaneByPrincipalPlane(
+    offset=0.528, principalPlane=XZPLANE)
+mdb.models['Model-1'].parts['pipe-intersection'].DatumAxisByPrincipalAxis(
+    principalAxis=XAXIS)
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.05, name='__profile__', 
+    sheetSize=2.12, transform=
+    mdb.models['Model-1'].parts['pipe-intersection'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].datums[2], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].datums[3], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.528, 0.229)))
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3)
+mdb.models['Model-1'].parts['pipe-intersection'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(-0.1, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1, 0.0), )
+    , radius=0.084, textPoint=(0.114512180626392, 0.10298715531826))
+mdb.models['Model-1'].parts['pipe-intersection'].SolidExtrude(
+    flipExtrudeDirection=ON, sketch=
+    mdb.models['Model-1'].sketches['__profile__'], sketchOrientation=RIGHT, 
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].datums[2], 
+    sketchPlaneSide=SIDE1, sketchUpEdge=
+    mdb.models['Model-1'].parts['pipe-intersection'].datums[3], upToFace=
+    mdb.models['Model-1'].parts['pipe-intersection'].faces.findAt((-0.227827, 
+    -0.008876, 0.152667), ))
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.05, name='__profile__', 
+    sheetSize=2.12, transform=
+    mdb.models['Model-1'].parts['pipe-intersection'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].faces.findAt((
+    0.071536, 0.528, 0.248799), ), sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].datums[3], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.528, 0.229)))
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3)
+mdb.models['Model-1'].parts['pipe-intersection'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    0.0, 0.0), point1=(-0.05, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.05, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].RadialDimension(curve=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.05, 0.0), 
+    ), radius=0.05, textPoint=(0.0148030498027802, 0.0216339603066444))
+mdb.models['Model-1'].parts['pipe-intersection'].CutExtrude(
+    flipExtrudeDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'], sketchOrientation=RIGHT, 
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].faces.findAt((
+    0.071536, 0.528, 0.248799), ), sketchPlaneSide=SIDE1, sketchUpEdge=
+    mdb.models['Model-1'].parts['pipe-intersection'].datums[3], upToFace=
+    mdb.models['Model-1'].parts['pipe-intersection'].faces.findAt((-0.138825, 
+    0.006975, 0.152667), ))
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['pipe-intersection'].Round(edgeList=(
+    mdb.models['Model-1'].parts['pipe-intersection'].edges.findAt((-0.084, 
+    0.211962, 0.229), ), ), radius=0.04)
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=0.05, name='__profile__', 
+    sheetSize=2.12, transform=
+    mdb.models['Model-1'].parts['pipe-intersection'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].datums[2], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['pipe-intersection'].datums[3], 
+    sketchOrientation=RIGHT, origin=(0.0, 0.528, 0.229)))
+mdb.models['Model-1'].sketches['__profile__'].sketchOptions.setValues(
+    decimalPlaces=3)
+mdb.models['Model-1'].parts['pipe-intersection'].projectReferencesOntoSketch(
+    filter=COPLANAR_EDGES, sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.4), point2=(
+    0.0, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.0, 0.2))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.0, 0.2), 
+    ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.0, 0.0), point2=(
+    0.325, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1625, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1625, 
+    0.0), ))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.0, 0.2))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1625, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.0, 0.2), )
+    , entity2=mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((
+    0.1625, 0.0), ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.325, 0.0), point2=
+    (0.325, -0.3375))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.325, 
+    -0.16875))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.325, 
+    -0.16875), ))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1625, 0.0))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.325, 
+    -0.16875))
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.1625, 
+    0.0), ), entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.325, 
+    -0.16875), ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(0.325, -0.3375), 
+    point2=(-0.375, -0.3375))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.025, 
+    -0.3375))
+mdb.models['Model-1'].sketches['__profile__'].HorizontalConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.025, 
+    -0.3375), ))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.325, 
+    -0.16875))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.025, 
+    -0.3375))
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((0.325, 
+    -0.16875), ), entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.025, 
+    -0.3375), ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(-0.375, -0.3375), 
+    point2=(-0.375, 0.4))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.375, 
+    0.03125))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.375, 
+    0.03125), ))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.025, 
+    -0.3375))
+mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.375, 
+    0.03125))
+mdb.models['Model-1'].sketches['__profile__'].PerpendicularConstraint(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.025, 
+    -0.3375), ), entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry.findAt((-0.375, 
+    0.03125), ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(-0.375, 0.4), 
+    point2=(0.0, 0.4))
+mdb.models['Model-1'].parts['pipe-intersection'].CutExtrude(
+    flipExtrudeDirection=OFF, sketch=
+    mdb.models['Model-1'].sketches['__profile__'], sketchOrientation=RIGHT, 
+    sketchPlane=mdb.models['Model-1'].parts['pipe-intersection'].datums[2], 
+    sketchPlaneSide=SIDE1, sketchUpEdge=
+    mdb.models['Model-1'].parts['pipe-intersection'].datums[3])
+del mdb.models['Model-1'].sketches['__profile__']
+# Save by Administrator on 2012_12_11-15.16.48; build 6.12-1 2012_03_13-20.23.18 119612

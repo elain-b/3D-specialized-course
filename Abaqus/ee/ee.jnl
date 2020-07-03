@@ -1,0 +1,672 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep('C:/Users/517-12/Desktop/Sample_File/Day1/Specimen.stp', 
+    scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='Specimen', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[22], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[17])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[20], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[17])
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[28], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[4])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[28], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[20])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[26], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[21])
+mdb.models['Model-1'].parts['Specimen'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=6.7)
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-2']
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-1']
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[21], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[14], CENTER))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[10], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[16], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[11], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[16], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[35], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[16], CENTER))
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-2']
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-1']
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[22], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[21], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[20], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[4])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[20], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[7])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[21], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[16])
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[7], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[20])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[26], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[7])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[28], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[7])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[27], point=
+    mdb.models['Model-1'].parts['Specimen'].vertices[20])
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#6 ]', 
+    ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[29], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[22], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#d ]', 
+    ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[13], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[14], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[15], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[14], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#13 ]', ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[39], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[11], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#18 ]', ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[42], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[49], CENTER))
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-6']
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[47], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[49], CENTER))
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-6']
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[58], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[49], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#11 ]', ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[63], point=
+    mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[16], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#63 ]', ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#20 ]', ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[27], 
+    point=mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[4], CENTER))
+del mdb.models['Model-1'].parts['Specimen'].features['Partition cell-8']
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#20 ]', ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[26], 
+    point=mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[4], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#20 ]', ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[69], 
+    point=mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[4], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].parts['Specimen'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#151 ]', ), ))
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#80 ]', ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[110], 
+    point=mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[44], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['Specimen'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#80 ]', ), ), normal=mdb.models['Model-1'].parts['Specimen'].edges[100], 
+    point=mdb.models['Model-1'].parts['Specimen'].InterestingPoint(
+    mdb.models['Model-1'].parts['Specimen'].edges[44], CENTER))
+mdb.models['Model-1'].parts['Specimen'].generateMesh()
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Hyperelastic(materialType=
+    ISOTROPIC, table=())
+mdb.models['Model-1'].HomogeneousSolidSection(material='Material-1', name=
+    'Section-1', thickness=None)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='Specimen-1', 
+    part=mdb.models['Model-1'].parts['Specimen'])
+mdb.models['Model-1'].StaticStep(name='Step-1', previous='Initial')
+mdb.models['Model-1'].rootAssembly.DatumPointByMidPoint(point1=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[42], 
+    point2=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[41])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.datums[4])
+mdb.models['Model-1'].rootAssembly.Set(name='Set-1', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[5], ))
+mdb.models['Model-1'].ConcentratedForce(cf3=-20540.0, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-1', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-1'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].faces.getSequenceFromMask(
+    ('[#4000 ]', ), ), name='Set-2')
+mdb.models['Model-1'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'BC-1', region=mdb.models['Model-1'].rootAssembly.sets['Set-2'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.models['Model-1'].parts['Specimen'].Set(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#10 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['Specimen'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Specimen'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['Specimen'].Set(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#10 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['Specimen'].Set(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#10 ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].rootAssembly.DatumPointByMidPoint(point1=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[20], 
+    point2=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[30])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].InterestingPoint(
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].edges[29], 
+    MIDDLE))
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.datums[8])
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-3', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[10], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].faces.getSequenceFromMask(
+    ('[#400 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-3'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='Constraint-1', 
+    surface=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-1'], u1=ON, u2=
+    ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.models['Model-1'].parts['Specimen'].Set(cells=
+    mdb.models['Model-1'].parts['Specimen'].cells.getSequenceFromMask((
+    '[#3ff ]', ), ), name='Set-2')
+mdb.models['Model-1'].parts['Specimen'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Specimen'].sets['Set-2'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+del mdb.models['Model-1'].parts['Specimen'].sectionAssignments[0]
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].parts['Specimen'].sets['Set-1']
+mdb.models['Model-1'].rootAssembly.regenerate()
+del mdb.models['Model-1'].materials['Material-1'].hyperelastic
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((73000.0, 0.3), ))
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_SPECIMEN-1_S,ASSEMBLY__T0_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_SPECIMEN-1_S,ASSEMBLY__T1_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY_SET-1 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY_SET-1 HAS NOT BEEN DEFINED', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'A CONCENTRATED LOAD HAS BEEN SPECIFIED ON NODE SET ASSEMBLY_SET-1.  THIS NODE SET IS NOT ACTIVE IN THE MODEL', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '56 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-4', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[5], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-2', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].faces.getSequenceFromMask(
+    ('[#2000000 #400 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-4'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='Constraint-2', 
+    surface=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-2'], u1=ON, u2=
+    ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_SPECIMEN-1_S,ASSEMBLY__T0_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_SPECIMEN-1_S,ASSEMBLY__T1_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '56 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 13412, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 98.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Fri Oct 20 14:11:09 2017', 
+    'jobName': 'Job-1'})
+del mdb.models['Model-1'].constraints['Constraint-1']
+mdb.models['Model-1'].rootAssembly.DatumPointByMidPoint(point1=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[29], 
+    point2=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[32])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.datums[15])
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-5', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[16], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].faces.getSequenceFromMask(
+    ('[#4000 #200 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-5'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='Constraint-3', 
+    surface=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-3'], u1=ON, u2=
+    ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_SPECIMEN-1_S,ASSEMBLY__T0_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_SPECIMEN-1_S,ASSEMBLY__T1_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NODE SET ASSEMBLY_M_SET-3 HAS NO MEMBERS AND WILL BE IGNORED.  NODES DEFINED IN THIS SET MAY HAVE BEEN DELETED BECAUSE THEY WERE NOT CONNECTED TO ANY ELEMENTS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '56 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '63 nodes have dof on which incorrect boundary conditions may have been specified. The nodes have been identified in node set WarnNodeBCIncorrectDof.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 13724, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 98.0})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 1U', 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 2U', 
+    'timeIncrement': 0.25, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 3U', 
+    'timeIncrement': 0.0625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 4U', 
+    'timeIncrement': 0.015625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 5U', 
+    'timeIncrement': 0.00390625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Too many attempts made for this increment', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+del mdb.models['Model-1'].rootAssembly.features['RP-3']
+del mdb.models['Model-1'].rootAssembly.features['RP-2']
+del mdb.models['Model-1'].rootAssembly.features['Datum pt-2']
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_SPECIMEN-1_S,ASSEMBLY__T0_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_SPECIMEN-1_S,ASSEMBLY__T1_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '56 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '63 nodes have dof on which incorrect boundary conditions may have been specified. The nodes have been identified in node set WarnNodeBCIncorrectDof.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 3212, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 98.0})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 1U', 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 2U', 
+    'timeIncrement': 0.25, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 3U', 
+    'timeIncrement': 0.0625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 4U', 
+    'timeIncrement': 0.015625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': ' 5U', 
+    'timeIncrement': 0.00390625, 'increment': 1, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 7})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': STANDARD_PHASE, 
+    'message': 'Too many attempts made for this increment', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Abaqus/Standard Analysis exited with an error - Please see the  message file for possible error messages if the file exists.', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].rootAssembly.DatumPointByMidPoint(point1=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[20], 
+    point2=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].vertices[30])
+mdb.models['Model-1'].rootAssembly.ReferencePoint(point=
+    mdb.models['Model-1'].rootAssembly.datums[19])
+del mdb.models['Model-1'].constraints['Constraint-3']
+mdb.models['Model-1'].rootAssembly.Set(name='m_Set-6', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.referencePoints[20], ))
+mdb.models['Model-1'].rootAssembly.Surface(name='s_Surf-4', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Specimen-1'].faces.getSequenceFromMask(
+    ('[#400 ]', ), ))
+mdb.models['Model-1'].Coupling(controlPoint=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-6'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='Constraint-3', 
+    surface=mdb.models['Model-1'].rootAssembly.surfaces['s_Surf-4'], u1=ON, u2=
+    ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+del mdb.models['Model-1'].rootAssembly.features['RP-4']
+del mdb.models['Model-1'].rootAssembly.features['Datum pt-3']
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_SPECIMEN-1_S,ASSEMBLY__T0_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_SPECIMEN-1_S,ASSEMBLY__T1_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '56 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 3356, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 98.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Fri Oct 20 14:20:25 2017', 
+    'jobName': 'Job-1'})
+# Save by 517-12 on 2017_10_20-14.22.00; build 6.14-3 2015_02_03-06.17.19 134785
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].loads['Load-1'].setValues(cf3=-205400.0, 
+    distributionType=UNIFORM, field='')
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T0_SPECIMEN-1_S,ASSEMBLY__T0_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IF SIGNIFICANT CLEARANCE/OVERCLOSURE EXISTS BETWEEN SURFACE PAIR (ASSEMBLY__T1_SPECIMEN-1_S,ASSEMBLY__T1_SPECIMEN-1_M) AND THE MASTER SURFACE DOES NOT HAVE ROTATIONAL DEGREES OF FREEDOM, ADJUSTMENT IS RECOMMENDED FOR CORRECT ENFORCEMENT OF THE TIE CONSTRAINT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': '56 elements are distorted. Either the isoparametric angles are out of the suggested limits or the triangular or tetrahedral quality measure is bad. The elements have been identified in element set WarnElemDistorted.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 2040, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 98.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Fri Oct 20 14:34:47 2017', 
+    'jobName': 'Job-1'})
+# Save by 517-12 on 2017_10_20-14.35.16; build 6.14-3 2015_02_03-06.17.19 134785
+# Save by 517-12 on 2017_10_20-15.02.21; build 6.14-3 2015_02_03-06.17.19 134785

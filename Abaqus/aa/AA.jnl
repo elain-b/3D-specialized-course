@@ -1,0 +1,195 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models.changeKey(fromName='Model-1', toName='STATIC')
+mdb.models['STATIC'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['STATIC'].sketches['__profile__'].rectangle(point1=(-11.25, 11.25), 
+    point2=(13.75, -8.75))
+mdb.models['STATIC'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    -3.99013900756836, -11.703670501709), value=25.0, vertex1=
+    mdb.models['STATIC'].sketches['__profile__'].vertices[1], vertex2=
+    mdb.models['STATIC'].sketches['__profile__'].vertices[2])
+mdb.models['STATIC'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    17.5086555480957, -1.29464340209961), value=20.0, vertex1=
+    mdb.models['STATIC'].sketches['__profile__'].vertices[2], vertex2=
+    mdb.models['STATIC'].sketches['__profile__'].vertices[3])
+mdb.models['STATIC'].Part(dimensionality=THREE_D, name='CANTILEVER', type=
+    DEFORMABLE_BODY)
+mdb.models['STATIC'].parts['CANTILEVER'].BaseSolidExtrude(depth=20.0, sketch=
+    mdb.models['STATIC'].sketches['__profile__'])
+del mdb.models['STATIC'].sketches['__profile__']
+mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'].setValues(
+    depth=100.0)
+mdb.models['STATIC'].parts['CANTILEVER'].regenerate()
+mdb.models['STATIC'].parts['CANTILEVER'].regenerate()
+mdb.models['STATIC'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'].sketch)
+mdb.models['STATIC'].parts['CANTILEVER'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['STATIC'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'])
+mdb.models['STATIC'].sketches['__edit__'].dimensions[1].setValues(value=30)
+mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['STATIC'].sketches['__edit__'])
+del mdb.models['STATIC'].sketches['__edit__']
+mdb.models['STATIC'].parts['CANTILEVER'].regenerate()
+mdb.models['STATIC'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'].sketch)
+mdb.models['STATIC'].parts['CANTILEVER'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['STATIC'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'])
+mdb.models['STATIC'].sketches['__edit__'].dimensions[1].setValues(value=25)
+mdb.models['STATIC'].parts['CANTILEVER'].features['Solid extrude-1'].setValues(
+    sketch=mdb.models['STATIC'].sketches['__edit__'])
+del mdb.models['STATIC'].sketches['__edit__']
+mdb.models['STATIC'].Material(name='STEEL')
+mdb.models['STATIC'].materials['STEEL'].Elastic(table=((210000.0, 0.3), ))
+mdb.models['STATIC'].HomogeneousSolidSection(material='STEEL', name='Section-1'
+    , thickness=None)
+mdb.models['STATIC'].parts['CANTILEVER'].Set(cells=
+    mdb.models['STATIC'].parts['CANTILEVER'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['STATIC'].parts['CANTILEVER'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['STATIC'].parts['CANTILEVER'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['STATIC'].parts['CANTILEVER'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=4.0)
+mdb.models['STATIC'].parts['CANTILEVER'].generateMesh()
+mdb.meshEditOptions.setValues(enableUndo=True, maxUndoCacheElements=0.5)
+mdb.models['STATIC'].parts['CANTILEVER'].setElementType(elemTypes=(ElemType(
+    elemCode=C3D8R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=DEFAULT, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=(
+    mdb.models['STATIC'].parts['CANTILEVER'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), ))
+mdb.models['STATIC'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['STATIC'].rootAssembly.Instance(dependent=ON, name='CANTILEVER-1', 
+    part=mdb.models['STATIC'].parts['CANTILEVER'])
+mdb.models['STATIC'].StaticStep(initialInc=0.1, name='Step-1', previous=
+    'Initial')
+mdb.models['STATIC'].rootAssembly.ReferencePoint(point=(0.0, 0.0, 100.0))
+mdb.models['STATIC'].rootAssembly.Set(name='m_Set-1', referencePoints=(
+    mdb.models['STATIC'].rootAssembly.referencePoints[4], ))
+mdb.models['STATIC'].rootAssembly.Surface(name='s_Surf-1', side1Faces=
+    mdb.models['STATIC'].rootAssembly.instances['CANTILEVER-1'].faces.getSequenceFromMask(
+    ('[#10 ]', ), ))
+mdb.models['STATIC'].Coupling(controlPoint=
+    mdb.models['STATIC'].rootAssembly.sets['m_Set-1'], couplingType=KINEMATIC, 
+    influenceRadius=WHOLE_SURFACE, localCsys=None, name='Constraint-1', 
+    surface=mdb.models['STATIC'].rootAssembly.surfaces['s_Surf-1'], u1=ON, u2=
+    ON, u3=ON, ur1=ON, ur2=ON, ur3=ON)
+mdb.models['STATIC'].rootAssembly.Set(name='Set-2', referencePoints=(
+    mdb.models['STATIC'].rootAssembly.referencePoints[4], ))
+mdb.models['STATIC'].ConcentratedForce(cf2=-150.0, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', localCsys=None, name='Load-1', region=
+    mdb.models['STATIC'].rootAssembly.sets['Set-2'])
+mdb.models['STATIC'].rootAssembly.Set(faces=
+    mdb.models['STATIC'].rootAssembly.instances['CANTILEVER-1'].faces.getSequenceFromMask(
+    ('[#20 ]', ), ), name='Set-3')
+mdb.models['STATIC'].EncastreBC(createStepName='Step-1', localCsys=None, name=
+    'BC-1', region=mdb.models['STATIC'].rootAssembly.sets['Set-3'])
+mdb.models['STATIC'].boundaryConditions['BC-1'].setValues(typeName=PINNED)
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='STATIC', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='STATIC', nodalOutputPrecision=SINGLE, 
+    numCpus=2, numDomains=2, numGPUs=0, queue=None, resultsFormat=ODB, scratch=
+    '', type=ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['STATIC'].submit(consistencyChecking=OFF)
+mdb.jobs['STATIC']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'WHENEVER A TRANSLATION (ROTATION) DOF AT A NODE IS CONSTRAINED BY A KINEMATIC COUPLING DEFINITION THE TRANSLATION (ROTATION) DOFS FOR THAT NODE CANNOT BE INCLUDED IN ANY OTHER CONSTRAINT INCLUDING MPCS, RIGID BODIES, ETC.', 
+    'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'MPCS (EXTERNAL or INTERNAL, including those generated from rigid body definitions), KINEMATIC COUPLINGS, AND/OR EQUATIONS WILL ACTIVATE ADDITIONAL DEGREES OF FREEDOM', 
+    'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\STATIC.odb', 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 12948, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.1, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'STATIC', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'STATIC', 'memory': 38.0})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 0.1, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 1, 'stepTime': 0.1, 'step': 1, 
+    'jobName': 'STATIC', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 0.2, 'attempts': 1, 
+    'timeIncrement': 0.1, 'increment': 2, 'stepTime': 0.2, 'step': 1, 
+    'jobName': 'STATIC', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 0.35, 'attempts': 1, 
+    'timeIncrement': 0.15, 'increment': 3, 'stepTime': 0.35, 'step': 1, 
+    'jobName': 'STATIC', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 0.575, 'attempts': 1, 
+    'timeIncrement': 0.225, 'increment': 4, 'stepTime': 0.575, 'step': 1, 
+    'jobName': 'STATIC', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 0.9125, 'attempts': 1, 
+    'timeIncrement': 0.3375, 'increment': 5, 'stepTime': 0.9125, 'step': 1, 
+    'jobName': 'STATIC', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.0874999999999999, 'increment': 6, 'stepTime': 1.0, 
+    'step': 1, 'jobName': 'STATIC', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['STATIC']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'STATIC'})
+mdb.jobs['STATIC']._Message(JOB_COMPLETED, {'time': 'Wed Oct 18 16:12:18 2017', 
+    'jobName': 'STATIC'})
+mdb.models['STATIC'].parts['CANTILEVER'].regenerate()
+# Save by 517-12 on 2017_10_18-16.45.49; build 6.14-3 2015_02_03-06.17.19 134785
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['STATIC'].rootAssembly.regenerate()
+# Save by 517-12 on 2017_10_18-16.46.22; build 6.14-3 2015_02_03-06.17.19 134785

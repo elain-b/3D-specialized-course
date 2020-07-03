@@ -1,0 +1,9 @@
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\bin\Debug\298.exe.config
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\bin\Debug\298.exe
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\bin\Debug\298.pdb
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\obj\Debug\298.csprojResolveAssemblyReference.cache
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\obj\Debug\_298.Form1.resources
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\obj\Debug\_298.Properties.Resources.resources
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\obj\Debug\298.csproj.GenerateResource.Cache
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\obj\Debug\298.exe
+C:\Users\517-12\Desktop\C#\11_3_2\298\298\obj\Debug\298.pdb

@@ -1,0 +1,991 @@
+# -*- coding: mbcs -*-
+from abaqus import *
+upgradeMdb('C:/Users/517-12/Desktop/Sample_File/Day2/Carrier-6.12-1.cae', 
+    'C:/Users/517-12/Desktop/Sample_File/Day2/Carrier.cae')
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].Part(name='carrier-failed', objectToCopy=
+    mdb.models['Model-1'].parts['carrier'])
+mdb.models['Model-1'].parts['carrier-failed'].Unlock(reportWarnings=False)
+del mdb.models['Model-1'].parts['carrier']
+mdb.models['Model-1'].parts.changeKey(fromName='carrier-failed', toName=
+    'carrier')
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[347], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[161])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[347], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[202], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[0], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[143], 
+    mdb.models['Model-1'].parts['carrier'].edges[145]))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneThreePoints(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), point1=mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[111], MIDDLE), point2=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[106], MIDDLE), point3=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[373], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-1']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[107], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[108], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-1']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNCorners(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[0], cornerPoints=(
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[76], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[102], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[125], MIDDLE)))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[107], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[1], CENTER))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[483], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[302], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[301], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[301], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[303], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[302], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[303], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[300], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[300], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[303], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNCorners(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], cornerPoints=(
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[304], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[299], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[508], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[310], MIDDLE)))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[525], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[515], MIDDLE))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[309], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[507], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[303], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[483], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[336], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[303], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[336], CENTER))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[80])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneThreePoints(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), point1=mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[272], MIDDLE), point2=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[304], MIDDLE), point3=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[319], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneThreePoints(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), point1=mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[336], CENTER), point2=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[486], MIDDLE), point3=
+    mdb.models['Model-1'].parts['carrier'].vertices[303])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellBySweepEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[302], ), 
+    sweepPath=mdb.models['Model-1'].parts['carrier'].edges[272])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[486], 
+    mdb.models['Model-1'].parts['carrier'].edges[484]))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[485], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[0])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[485], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[485], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[485], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[267])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[485], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[0])
+#* Feature creation failed.
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=10.88, name='__profile__', 
+    sheetSize=435.27, transform=
+    mdb.models['Model-1'].parts['carrier'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['carrier'].faces[205], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['carrier'].edges[493], 
+    sketchOrientation=RIGHT, origin=(14.5, 0.0, 0.0)))
+mdb.models['Model-1'].parts['carrier'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[297], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[304])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[344], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[303], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[299], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[220])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[208])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[185])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[531], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[529], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[317], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellBySweepEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[316], ), 
+    sweepPath=mdb.models['Model-1'].parts['carrier'].edges[513])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellBySweepEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[382], ), 
+    sweepPath=mdb.models['Model-1'].parts['carrier'].edges[479])
+#* Feature creation failed.
+mdb.models['Model-1'].ConstrainedSketch(gridSpacing=10.88, name='__profile__', 
+    sheetSize=435.27, transform=
+    mdb.models['Model-1'].parts['carrier'].MakeSketchTransform(
+    sketchPlane=mdb.models['Model-1'].parts['carrier'].faces[204], 
+    sketchPlaneSide=SIDE1, 
+    sketchUpEdge=mdb.models['Model-1'].parts['carrier'].edges[319], 
+    sketchOrientation=RIGHT, origin=(14.5, 0.0, 0.0)))
+mdb.models['Model-1'].parts['carrier'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__profile__'])
+mdb.models['Model-1'].sketches['__profile__'].CircleByCenterPerimeter(center=(
+    38.08, -8.16), point1=(38.08, -13.6))
+mdb.models['Model-1'].parts['carrier'].PartitionFaceBySketch(faces=
+    mdb.models['Model-1'].parts['carrier'].faces.getSequenceFromMask((
+    '[#0:6 #1000 ]', ), ), sketch=mdb.models['Model-1'].sketches['__profile__']
+    , sketchUpEdge=mdb.models['Model-1'].parts['carrier'].edges[319])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['carrier'].PartitionCellBySweepEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[27], ), 
+    sweepPath=mdb.models['Model-1'].parts['carrier'].edges[336])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+del mdb.models['Model-1'].parts['carrier'].features['Partition face-1']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[499], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[321], MIDDLE))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[327], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[241])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[12], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[12])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[23], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[15])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[21], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[19])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[21], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[2])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[21], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[21], MIDDLE))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[53], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[1])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[53], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[48])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[1], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[1])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[63], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[55])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#40 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[18], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[16])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[69], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[0])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[70], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[61])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[19], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[15])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-10']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-9']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-8']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-7']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-6']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-5']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-4']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[362], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[69], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[479], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[480], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[383], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[263])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNCorners(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], cornerPoints=(
+    mdb.models['Model-1'].parts['carrier'].vertices[320], 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[516], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].vertices[321], 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[515], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].vertices[326]))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[315], 
+    mdb.models['Model-1'].parts['carrier'].edges[513], 
+    mdb.models['Model-1'].parts['carrier'].edges[319], 
+    mdb.models['Model-1'].parts['carrier'].edges[321], 
+    mdb.models['Model-1'].parts['carrier'].edges[322], 
+    mdb.models['Model-1'].parts['carrier'].edges[323], 
+    mdb.models['Model-1'].parts['carrier'].edges[294], 
+    mdb.models['Model-1'].parts['carrier'].edges[291], 
+    mdb.models['Model-1'].parts['carrier'].edges[298], 
+    mdb.models['Model-1'].parts['carrier'].edges[299], 
+    mdb.models['Model-1'].parts['carrier'].edges[296], 
+    mdb.models['Model-1'].parts['carrier'].edges[301], 
+    mdb.models['Model-1'].parts['carrier'].edges[303], 
+    mdb.models['Model-1'].parts['carrier'].edges[304], 
+    mdb.models['Model-1'].parts['carrier'].edges[305], 
+    mdb.models['Model-1'].parts['carrier'].edges[270], 
+    mdb.models['Model-1'].parts['carrier'].edges[309], 
+    mdb.models['Model-1'].parts['carrier'].edges[310], 
+    mdb.models['Model-1'].parts['carrier'].edges[307], 
+    mdb.models['Model-1'].parts['carrier'].edges[312], 
+    mdb.models['Model-1'].parts['carrier'].edges[510], 
+    mdb.models['Model-1'].parts['carrier'].edges[511], 
+    mdb.models['Model-1'].parts['carrier'].edges[512], 
+    mdb.models['Model-1'].parts['carrier'].edges[508], 
+    mdb.models['Model-1'].parts['carrier'].edges[314]))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[323], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[239])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[323], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[239])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[323], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[215])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[489], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[309])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[306], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[309])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[83])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[207])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[82])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[93])
+#* Feature creation failed.
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[188])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[205])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[187])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[194])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[79])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[81])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNCorners(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], cornerPoints=(
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[483], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[485], MIDDLE), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[336], CENTER), 
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[385], MIDDLE)))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[192])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[188])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[2], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[339], 
+    mdb.models['Model-1'].parts['carrier'].edges[341]))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellBySweepEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[388], ), 
+    sweepPath=mdb.models['Model-1'].parts['carrier'].edges[486])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[486], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[268])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[340], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[2])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[336], 
+    mdb.models['Model-1'].parts['carrier'].edges[338]))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[486], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[303])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[336], 
+    mdb.models['Model-1'].parts['carrier'].edges[338]))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[192])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[485], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[485], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-2']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[485], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[307], MIDDLE))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[491], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[313], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPatchNEdges(cell=
+    mdb.models['Model-1'].parts['carrier'].cells[1], edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[313], 
+    mdb.models['Model-1'].parts['carrier'].edges[318], 
+    mdb.models['Model-1'].parts['carrier'].edges[512], 
+    mdb.models['Model-1'].parts['carrier'].edges[513], 
+    mdb.models['Model-1'].parts['carrier'].edges[514], 
+    mdb.models['Model-1'].parts['carrier'].edges[510], 
+    mdb.models['Model-1'].parts['carrier'].edges[320], 
+    mdb.models['Model-1'].parts['carrier'].edges[321], 
+    mdb.models['Model-1'].parts['carrier'].edges[515], 
+    mdb.models['Model-1'].parts['carrier'].edges[325], 
+    mdb.models['Model-1'].parts['carrier'].edges[327], 
+    mdb.models['Model-1'].parts['carrier'].edges[328], 
+    mdb.models['Model-1'].parts['carrier'].edges[329], 
+    mdb.models['Model-1'].parts['carrier'].edges[300], 
+    mdb.models['Model-1'].parts['carrier'].edges[297], 
+    mdb.models['Model-1'].parts['carrier'].edges[304], 
+    mdb.models['Model-1'].parts['carrier'].edges[305], 
+    mdb.models['Model-1'].parts['carrier'].edges[302], 
+    mdb.models['Model-1'].parts['carrier'].edges[307], 
+    mdb.models['Model-1'].parts['carrier'].edges[309], 
+    mdb.models['Model-1'].parts['carrier'].edges[310], 
+    mdb.models['Model-1'].parts['carrier'].edges[311], 
+    mdb.models['Model-1'].parts['carrier'].edges[276], 
+    mdb.models['Model-1'].parts['carrier'].edges[315], 
+    mdb.models['Model-1'].parts['carrier'].edges[316]))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[313], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[314], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[313], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[277], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[491], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[313], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[344], ), line=
+    mdb.models['Model-1'].parts['carrier'].edges[491], sense=REVERSE)
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[313], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[0])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[313], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[318], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[317], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[318], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[312], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[310])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[512], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[512], MIDDLE))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[317], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[235])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[317], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[209])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[24], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[25])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[512], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[75], CENTER))
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlaneNormalToEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), edge=mdb.models['Model-1'].parts['carrier'].edges[513], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[321])
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-3']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[511], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[320])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[511], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[511], MIDDLE))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[413])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#40 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[669], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[400])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[667], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[400])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[700], MIDDLE))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[7], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[5])
+#* Feature creation failed.
+del mdb.models['Model-1'].parts['carrier'].features['Partition cell-7']
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[5])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[708], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[702], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[708], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[699], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[699], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[5], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[707], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[705], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[705], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[707], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[705], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[707], point=
+    mdb.models['Model-1'].parts['carrier'].vertices[5])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[705], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[700], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[705], CENTER))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[701], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[703], CENTER))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[676], point=
+    mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[570], CENTER))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#400 ]', ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[682], 
+    point=mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[586], MIDDLE))
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByPlanePointNormal(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#400 ]', ), ), normal=mdb.models['Model-1'].parts['carrier'].edges[683], 
+    point=mdb.models['Model-1'].parts['carrier'].InterestingPoint(
+    mdb.models['Model-1'].parts['carrier'].edges[579], CENTER))
+mdb.models['Model-1'].parts['carrier'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=3.4)
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#2 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#4 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#1 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#100 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#100 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#200 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#200 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#20 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ))
+mdb.models['Model-1'].parts['carrier'].setMeshControls(algorithm=MEDIAL_AXIS, 
+    regions=mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#10 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['carrier'].deleteFeatures(('Partition cell-9', 
+    'Partition cell-1', 'Partition cell-2', 'Partition cell-3', 
+    'Partition cell-4', 'Partition cell-5', 'Partition cell-6', 
+    'Partition cell-7', 'Partition cell-8'))
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[128])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[127])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#2 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[139])
+mdb.models['Model-1'].parts['carrier'].setValues(geometryRefinement=EXTRA_FINE)
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#4 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[144])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[126])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[125])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#8 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[7])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[216])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#1 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[216])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#20 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[106])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#100 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[109])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#100 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[229])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#7ff ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[222])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#84491 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[237])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#80481 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[225])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#8a190 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[227])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#4830a0 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[246])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask(('[#10 ]', 
+    ), ), extendFace=mdb.models['Model-1'].parts['carrier'].faces[134])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#2000 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[136])
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#10000 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[259])
+#* Feature creation failed.
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#10000 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['carrier'].faces[258])
+mdb.models['Model-1'].parts['carrier'].PartitionCellBySweepEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#200000 ]', ), ), edges=(
+    mdb.models['Model-1'].parts['carrier'].edges[538], 
+    mdb.models['Model-1'].parts['carrier'].edges[541]), sweepPath=
+    mdb.models['Model-1'].parts['carrier'].edges[354])
+mdb.models['Model-1'].parts['carrier'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=1.4)
+mdb.models['Model-1'].parts['carrier'].generateMesh()
+mdb.meshEditOptions.setValues(enableUndo=True, maxUndoCacheElements=0.5)
+mdb.models['Model-1'].parts['carrier'].editNode(coordinate1=14.5, coordinate2=
+    -17.5794010162354, coordinate3=83.1617889404297, nodes=
+    mdb.models['Model-1'].parts['carrier'].nodes.getSequenceFromMask(mask=(
+    '[#0:115 #80000000 ]', ), ), projectToGeometry=ON)
+mdb.models['Model-1'].parts['carrier'].editNode(coordinate1=13.0889892578125, 
+    coordinate2=-17.477294921875, coordinate3=82.7676696777344, nodes=
+    mdb.models['Model-1'].parts['carrier'].nodes.getSequenceFromMask(mask=(
+    '[#0:2209 #1000000 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].editNode(coordinate1=9.96029663085938, 
+    coordinate2=-17.3379821777344, coordinate3=82.8859100341797, nodes=
+    mdb.models['Model-1'].parts['carrier'].nodes.getSequenceFromMask(mask=(
+    '[#0:2410 #1000000 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].editNode(coordinate1=6.49999904632568, 
+    coordinate2=-17.2800559997559, coordinate3=82.7968368530273, nodes=
+    mdb.models['Model-1'].parts['carrier'].nodes.getSequenceFromMask(mask=(
+    '[#0:913 #20 ]', ), ), projectToGeometry=ON)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='carrier-1', 
+    part=mdb.models['Model-1'].parts['carrier'])
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['carrier-1'].faces.getSequenceFromMask(
+    ('[#0:5 #100 ]', ), ), name='Set-1')
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['carrier-1'].faces.getSequenceFromMask(
+    ('[#0:5 #180 #0 #180000 #89 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['carrier'].deleteMesh(regions=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#108 ]', ), ))
+mdb.models['Model-1'].parts['carrier'].ignoreEntity(entities=(
+    mdb.models['Model-1'].parts['carrier'].vertices.getSequenceFromMask((
+    '[#3000000 ]', ), ), 
+    mdb.models['Model-1'].parts['carrier'].edges.getSequenceFromMask((
+    '[#50000000 ]', ), )))
+mdb.models['Model-1'].parts['carrier']._previewCreateVirtualTopology()
+mdb.models['Model-1'].parts['carrier'].deleteMesh()
+mdb.models['Model-1'].parts['carrier'].createVirtualTopology(
+    applyBlendControls=True, blendRadiusTolerance=1.9, 
+    blendSubtendedAngleTolerance=60.0, cornerAngleTolerance=30.0, 
+    faceAspectRatioThreshold=10.0, ignoreRedundantEntities=True, 
+    mergeShortEdges=True, mergeSliverFaces=True, mergeSmallAngleFaces=True, 
+    mergeSmallFaces=True, mergeThinStairFaces=True, shortEdgeThreshold=0.37, 
+    smallFaceAreaThreshold=0.68, smallFaceCornerAngleThreshold=10.0, 
+    thinStairFaceThreshold=0.074)
+# Save by 517-12 on 2017_10_20-17.01.58; build 6.14-3 2015_02_03-06.17.19 134785
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].parts['carrier'].PartitionCellByExtrudeEdge(cells=
+    mdb.models['Model-1'].parts['carrier'].cells.getSequenceFromMask((
+    '[#400 ]', ), ), edges=(mdb.models['Model-1'].parts['carrier'].edges[454], 
+    ), line=mdb.models['Model-1'].parts['carrier'].edges[303], sense=REVERSE)
+#* Feature creation failed.
+# Save by 517-12 on 2017_10_20-17.19.06; build 6.14-3 2015_02_03-06.17.19 134785

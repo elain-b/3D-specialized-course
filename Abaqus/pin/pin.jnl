@@ -1,0 +1,403 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep('C:/Users/517-12/Desktop/Sample_File/Day3/HingeAssembly.stp', 
+    scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='HingeAssembly', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].Material(name='Steel')
+mdb.models['Model-1'].materials['Steel'].Elastic(table=((210000.0, 0.3), ))
+mdb.models['Model-1'].HomogeneousSolidSection(material='Steel', name='Steel', 
+    thickness=None)
+mdb.models['Model-1'].parts['HingeAssembly'].Set(cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['HingeAssembly'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['HingeAssembly'].sets['Set-1'], sectionName=
+    'Steel', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=200.0)
+mdb.models['Model-1'].sketches['__profile__'].ConstructionLine(point1=(0.0, 
+    -100.0), point2=(0.0, 100.0))
+mdb.models['Model-1'].sketches['__profile__'].FixedConstraint(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2])
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(10.0, 15.0), point2=
+    (10.0, -20.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[3])
+mdb.models['Model-1'].sketches['__profile__'].delete(objectList=(
+    mdb.models['Model-1'].sketches['__profile__'].geometry[3], ))
+mdb.models['Model-1'].sketches['__profile__'].Line(point1=(10.0, 30.0), point2=
+    (10.0, -30.0))
+mdb.models['Model-1'].sketches['__profile__'].VerticalConstraint(addUndoState=
+    False, entity=mdb.models['Model-1'].sketches['__profile__'].geometry[4])
+mdb.models['Model-1'].sketches['__profile__'].DistanceDimension(entity1=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], entity2=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[4], textPoint=(
+    4.247389793396, 12.4668083190918), value=12.0)
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='pin', type=
+    ANALYTIC_RIGID_SURFACE)
+mdb.models['Model-1'].parts['pin'].AnalyticRigidSurfRevolve(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].parts['pin'].ReferencePoint(point=
+    mdb.models['Model-1'].parts['pin'].vertices[1])
+mdb.models['Model-1'].parts['HingeAssembly'].PartitionCellByExtendFace(cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#1 ]', ), ), extendFace=
+    mdb.models['Model-1'].parts['HingeAssembly'].faces[7])
+mdb.models['Model-1'].parts['HingeAssembly'].PartitionCellByPlanePointNormal(
+    cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#2 ]', ), ), normal=mdb.models['Model-1'].parts['HingeAssembly'].edges[1]
+    , point=mdb.models['Model-1'].parts['HingeAssembly'].InterestingPoint(
+    mdb.models['Model-1'].parts['HingeAssembly'].edges[4], CENTER))
+mdb.models['Model-1'].parts['HingeAssembly'].PartitionCellByPlanePointNormal(
+    cells=
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#5 ]', ), ), normal=
+    mdb.models['Model-1'].parts['HingeAssembly'].edges[24], point=
+    mdb.models['Model-1'].parts['HingeAssembly'].InterestingPoint(
+    mdb.models['Model-1'].parts['HingeAssembly'].edges[14], CENTER))
+mdb.models['Model-1'].parts['HingeAssembly'].setElementType(elemTypes=(
+    ElemType(elemCode=C3D8R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    kinematicSplit=AVERAGE_STRAIN, hourglassControl=DEFAULT, 
+    distortionControl=DEFAULT), ElemType(elemCode=C3D6, elemLibrary=STANDARD), 
+    ElemType(elemCode=C3D4, elemLibrary=STANDARD)), regions=(
+    mdb.models['Model-1'].parts['HingeAssembly'].cells.getSequenceFromMask((
+    '[#1f ]', ), ), ))
+mdb.models['Model-1'].parts['HingeAssembly'].seedPart(deviationFactor=0.1, 
+    minSizeFactor=0.1, size=4.0)
+mdb.models['Model-1'].parts['HingeAssembly'].generateMesh()
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'HingeAssembly-1', part=mdb.models['Model-1'].parts['HingeAssembly'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name=
+    'HingeAssembly-2', part=mdb.models['Model-1'].parts['HingeAssembly'])
+mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].translate(
+    vector=(88.0, 0.0, 0.0))
+mdb.models['Model-1'].rootAssembly.Instance(dependent=ON, name='pin-1', part=
+    mdb.models['Model-1'].parts['pin'])
+mdb.models['Model-1'].rootAssembly.instances['pin-1'].translate(vector=(182.4, 
+    0.0, 0.0))
+mdb.models['Model-1'].rootAssembly.Coaxial(fixedAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces[5], 
+    flip=ON, movableAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces[5])
+mdb.models['Model-1'].rootAssembly.ParallelFace(fixedPlane=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces[16], 
+    flip=OFF, movablePlane=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces[16])
+mdb.models['Model-1'].rootAssembly.Coaxial(fixedAxis=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces[5], 
+    flip=OFF, movableAxis=
+    mdb.models['Model-1'].rootAssembly.instances['pin-1'].faces[0])
+mdb.models['Model-1'].rootAssembly.translate(instanceList=('pin-1', ), vector=(
+    0.0, 0.0, -20.0))
+# Save by 517-12 on 2017_10_23-17.29.52; build 6.14-3 2015_02_03-06.17.19 134785
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].StaticStep(initialInc=0.01, name='Step-1', nlgeom=ON, 
+    previous='Initial')
+mdb.models['Model-1'].rootAssembly.Surface(name='pin', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['pin-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='hinge1_lateral', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces.getSequenceFromMask(
+    ('[#1000884 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='hinge1_hole', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces.getSequenceFromMask(
+    ('[#c000028 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='hinge2_hole', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces.getSequenceFromMask(
+    ('[#c000028 ]', ), ))
+mdb.models['Model-1'].rootAssembly.Surface(name='hinge2_lateral', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces.getSequenceFromMask(
+    ('[#1000884 ]', ), ))
+mdb.models['Model-1'].ContactProperty('IntProp-1')
+mdb.models['Model-1'].interactionProperties['IntProp-1'].TangentialBehavior(
+    dependencies=0, directionality=ISOTROPIC, elasticSlipStiffness=None, 
+    formulation=PENALTY, fraction=0.005, maximumElasticSlip=FRACTION, 
+    pressureDependency=OFF, shearStressLimit=None, slipRateDependency=OFF, 
+    table=((0.3, ), ), temperatureDependency=OFF)
+mdb.models['Model-1'].interactionProperties['IntProp-1'].NormalBehavior(
+    allowSeparation=ON, constraintEnforcementMethod=DEFAULT, 
+    pressureOverclosure=HARD)
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=NONE, 
+    clearanceRegion=None, createStepName='Initial', datumAxis=None, 
+    enforcement=NODE_TO_SURFACE, initialClearance=OMIT, interactionProperty=
+    'IntProp-1', master=mdb.models['Model-1'].rootAssembly.surfaces['pin'], 
+    name='hole1_pin', slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['hinge1_hole'], sliding=FINITE, 
+    smooth=0.2, surfaceSmoothing=NONE, thickness=OFF)
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=NONE, 
+    clearanceRegion=None, createStepName='Initial', datumAxis=None, 
+    enforcement=NODE_TO_SURFACE, initialClearance=OMIT, interactionProperty=
+    'IntProp-1', master=
+    mdb.models['Model-1'].rootAssembly.surfaces['hinge2_hole'], name=
+    'hoke2_pin', slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['hinge2_hole'], sliding=FINITE, 
+    smooth=0.2, surfaceSmoothing=NONE, thickness=OFF)
+mdb.models['Model-1'].SurfaceToSurfaceContactStd(adjustMethod=NONE, 
+    clearanceRegion=None, createStepName='Initial', datumAxis=None, 
+    enforcement=NODE_TO_SURFACE, initialClearance=OMIT, interactionProperty=
+    'IntProp-1', master=
+    mdb.models['Model-1'].rootAssembly.surfaces['hinge1_hole'], name=
+    'hole1_hole2', slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['hinge2_hole'], sliding=FINITE, 
+    smooth=0.2, surfaceSmoothing=NONE, thickness=OFF)
+mdb.models['Model-1'].rootAssembly.Set(faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-2'].faces.getSequenceFromMask(
+    ('[#40000 ]', ), ), name='Set-1')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='fix', region=
+    mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=SET, u2=SET, u3=SET, 
+    ur1=UNSET, ur2=UNSET, ur3=UNSET)
+mdb.models['Model-1'].rootAssembly.Set(name='Set-2', referencePoints=(
+    mdb.models['Model-1'].rootAssembly.instances['pin-1'].referencePoints[2], 
+    ))
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='fix2', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-2'], u1=UNSET, u2=SET, 
+    u3=SET, ur1=SET, ur2=UNSET, ur3=SET)
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-6', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['HingeAssembly-1'].faces.getSequenceFromMask(
+    ('[#40000 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', magnitude=-1.0, name='Load-1', region=
+    mdb.models['Model-1'].rootAssembly.surfaces['Surf-6'])
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE SURFACE INTERACTION INTPROP-1 FOR CONTACT PAIR (ASSEMBLY_HINGE2_HOLE,ASSEMBLY_HINGE1_HOLE) IS USED BY A CONTACT PAIR THAT USES PENALTY-TYPE CONTACT BY DEFAULT.  THIS CONTACT PAIR WILL USE PENALTY-TYPE CONTACT.  IF THIS IS NOT THE INTENDED USE, DEFINE A DIFFERENT SURFACE INTERACTION TO BE USED BY THIS CONTACT PAIR.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE SURFACE INTERACTION INTPROP-1 FOR CONTACT PAIR (ASSEMBLY_HINGE1_HOLE,ASSEMBLY_PIN-1_PIN) IS USED BY A CONTACT PAIR THAT USES PENALTY-TYPE CONTACT BY DEFAULT.  THIS CONTACT PAIR WILL USE PENALTY-TYPE CONTACT.  IF THIS IS NOT THE INTENDED USE, DEFINE A DIFFERENT SURFACE INTERACTION TO BE USED BY THIS CONTACT PAIR.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 3464, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.01, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 91.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.01, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 1, 'stepTime': 0.01, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 5, 'iterations': 6, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.02, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 2, 'stepTime': 0.02, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 3, 'iterations': 4, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.035, 'attempts': 1, 
+    'timeIncrement': 0.015, 'increment': 3, 'stepTime': 0.035, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0575, 'attempts': 1, 
+    'timeIncrement': 0.0225, 'increment': 4, 'stepTime': 0.0575, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.09125, 'attempts': 1, 
+    'timeIncrement': 0.03375, 'increment': 5, 'stepTime': 0.09125, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.141875, 'attempts': 1, 
+    'timeIncrement': 0.050625, 'increment': 6, 'stepTime': 0.141875, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2178125, 'attempts': 1, 
+    'timeIncrement': 0.0759375, 'increment': 7, 'stepTime': 0.2178125, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.33171875, 'attempts': 1, 
+    'timeIncrement': 0.11390625, 'increment': 8, 'stepTime': 0.33171875, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.502578125, 'attempts': 1, 
+    'timeIncrement': 0.170859375, 'increment': 9, 'stepTime': 0.502578125, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7588671875, 'attempts': 1, 
+    'timeIncrement': 0.2562890625, 'increment': 10, 'stepTime': 0.7588671875, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 11, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.2411328125, 'increment': 11, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 1, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Tue Oct 24 13:46:21 2017', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].interactions['hoke2_pin'].setValues(adjustMethod=NONE, 
+    bondingSet=None, enforcement=NODE_TO_SURFACE, initialClearance=OMIT, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['pin'], sliding=FINITE, 
+    smooth=0.2, supplementaryContact=SELECTIVE, thickness=OFF)
+mdb.models['Model-1'].interactions['hole1_hole2'].setValues(adjustMethod=NONE, 
+    bondingSet=None, enforcement=NODE_TO_SURFACE, initialClearance=OMIT, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['pin'], slave=
+    mdb.models['Model-1'].rootAssembly.surfaces['hinge1_hole'], sliding=FINITE, 
+    smooth=0.2, supplementaryContact=SELECTIVE, thickness=OFF)
+mdb.models['Model-1'].interactions['hole1_pin'].setValues(adjustMethod=NONE, 
+    bondingSet=None, enforcement=NODE_TO_SURFACE, initialClearance=OMIT, 
+    master=mdb.models['Model-1'].rootAssembly.surfaces['hinge1_lateral'], 
+    slave=mdb.models['Model-1'].rootAssembly.surfaces['hinge2_lateral'], 
+    sliding=FINITE, smooth=0.2, supplementaryContact=SELECTIVE, thickness=OFF)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': '517-12-PC', 'handle': 13520, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 0.01, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 98.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.01, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 1, 'stepTime': 0.01, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 6, 'iterations': 7, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.02, 'attempts': 1, 
+    'timeIncrement': 0.01, 'increment': 2, 'stepTime': 0.02, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.035, 'attempts': 1, 
+    'timeIncrement': 0.015, 'increment': 3, 'stepTime': 0.035, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 1, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0575, 'attempts': 1, 
+    'timeIncrement': 0.0225, 'increment': 4, 'stepTime': 0.0575, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.09125, 'attempts': 1, 
+    'timeIncrement': 0.03375, 'increment': 5, 'stepTime': 0.09125, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.141875, 'attempts': 1, 
+    'timeIncrement': 0.050625, 'increment': 6, 'stepTime': 0.141875, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 7, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.2178125, 'attempts': 1, 
+    'timeIncrement': 0.0759375, 'increment': 7, 'stepTime': 0.2178125, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 8, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.33171875, 'attempts': 1, 
+    'timeIncrement': 0.11390625, 'increment': 8, 'stepTime': 0.33171875, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 9, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.502578125, 'attempts': 1, 
+    'timeIncrement': 0.170859375, 'increment': 9, 'stepTime': 0.502578125, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 10, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.7588671875, 'attempts': 1, 
+    'timeIncrement': 0.2562890625, 'increment': 10, 'stepTime': 0.7588671875, 
+    'step': 1, 'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 11, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 0.2411328125, 'increment': 11, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 2, 'iterations': 3, 'phase': STANDARD_PHASE, 
+    'equilibrium': 1})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Tue Oct 24 14:21:47 2017', 
+    'jobName': 'Job-1'})
+# Save by 517-12 on 2017_10_24-15.00.05; build 6.14-3 2015_02_03-06.17.19 134785
+# Save by 517-12 on 2017_10_24-15.00.11; build 6.14-3 2015_02_03-06.17.19 134785
+# Save by 517-12 on 2017_10_24-15.00.12; build 6.14-3 2015_02_03-06.17.19 134785
+# Save by 517-12 on 2017_10_24-15.00.12; build 6.14-3 2015_02_03-06.17.19 134785
+# Save by 517-12 on 2017_10_24-15.00.12; build 6.14-3 2015_02_03-06.17.19 134785

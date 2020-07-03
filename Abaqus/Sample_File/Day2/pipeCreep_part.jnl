@@ -1,0 +1,5 @@
+# Save by 517-12 on 2017_10_19-16.44.22; build 6.14-3 2015_02_03-06.17.19 134785
+from abaqus import *
+upgradeMdb('C:/Users/517-12/Desktop/Sample_File/Day2/pipeCreep_part-6.12-1.cae'
+    , 'C:/Users/517-12/Desktop/Sample_File/Day2/pipeCreep_part.cae')
+# Save by 517-12 on 2017_10_19-16.44.22; build 6.14-3 2015_02_03-06.17.19 134785

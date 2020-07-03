@@ -1,0 +1,6 @@
+C:\Users\517-12\Desktop\C#\11_2\11_2\bin\Debug\11_2.exe.config
+C:\Users\517-12\Desktop\C#\11_2\11_2\bin\Debug\11_2.exe
+C:\Users\517-12\Desktop\C#\11_2\11_2\bin\Debug\11_2.pdb
+C:\Users\517-12\Desktop\C#\11_2\11_2\obj\Debug\11_2.exe
+C:\Users\517-12\Desktop\C#\11_2\11_2\obj\Debug\11_2.pdb
+C:\Users\517-12\Desktop\C#\11_2\11_2\obj\Debug\11_2.csprojResolveAssemblyReference.cache

@@ -1,0 +1,12 @@
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\bin\Debug\WindowsForms_11_3.exe.config
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\bin\Debug\WindowsForms_11_3.exe
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\bin\Debug\WindowsForms_11_3.pdb
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.csprojResolveAssemblyReference.cache
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.Form1.resources
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.Properties.Resources.resources
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.csproj.GenerateResource.Cache
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.exe
+C:\Users\517-12\Desktop\C#\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.pdb
+C:\Users\517-12\Desktop\C#\11_3_3\WindowsForms_11_3\WindowsForms_11_3\bin\Debug\WindowsForms_11_3.exe.config
+C:\Users\517-12\Desktop\C#\11_3_3\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.exe
+C:\Users\517-12\Desktop\C#\11_3_3\WindowsForms_11_3\WindowsForms_11_3\obj\Debug\WindowsForms_11_3.pdb

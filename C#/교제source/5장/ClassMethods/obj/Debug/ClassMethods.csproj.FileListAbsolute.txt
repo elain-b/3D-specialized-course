@@ -1,0 +1,2 @@
+C:\ITCookbook\코드\6장\ClassMethods\bin\Debug\ClassMethods.exe.config
+C:\Users\517-12\Desktop\C#\교제source\5장\ClassMethods\bin\Debug\ClassMethods.exe.config
