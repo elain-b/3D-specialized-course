@@ -1,0 +1,49 @@
+`PT show` if `L-Green` <`L-red` 
+{
+	`PT show`=Rule_01\PT_1 
+}
+else if `L-Green` >`L-red` 
+{
+	`PT show`=Rule_01\PT_2 
+}
+
+else
+{
+	Message("점의 위치가 동일합니다.")
+}
+
+
+
+
+
+
+if Length.1 < Length.2 
+{
+	LN_SHOW = Rule\Line.4 
+}
+
+else if Length.1 > Length.2 
+{
+	LN_SHOW = Rule\Line.5 
+}
+
+else
+{
+	Message("거리가 같음")
+}
+
+
+
+
+
+
+
+If String.1 =="원"
+{
+	`Geometrical Set.1\Geometrical Set.2\Curve.1` =`Geometrical Set.1\Geometrical Set.2\Sketch.2` 
+	
+}
+else
+{
+	`Geometrical Set.1\Geometrical Set.2\Curve.1`=`Geometrical Set.1\Geometrical Set.2\Sketch.3` 
+}

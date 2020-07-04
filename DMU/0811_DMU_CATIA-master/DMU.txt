@@ -1,0 +1,29 @@
+Digital Mock Up
+root product
+component
+part number
+instance ()안에 있는 Part 이름
+options-infrastructure-cache management-
+cache activation-work with the system
+dicign mode
+vidualization mode
+접속
+clearance 여유값
+충돌
+
+fillet 큰->작
+fillet vertical방향부터 
+수직
+
+view-navigation mode-examine-fly
+render style-parallel-perspective-遠近感
+examine mode-fly mode-wark mode-左右に振れる
+look at-中心を?える
+magnifier-?大縮小
+presentation-review안에서만 만든다
+shuttle-tracks-sequences-clash
+
+path finder basic-ignore cokkisions충돌 무시
+advanced-smallest detail-작으면 많이 충돌-정밀한다
+
+smooth-path finder에서 나온 점을 선으로
